@@ -5,8 +5,8 @@ import { signin, authenticate, isAuthenticated } from "../auth/helper";
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    email: "elen@abc.com",
+    password: "1212",
     error: "",
     loading: false,
     didRedirect: false,
@@ -41,16 +41,15 @@ const Signin = () => {
   const performRedirect = () => {
     if (didRedirect) {
       if (user && user.role === 1) {
-        return <p>Redirect to admin dashboard</p>;
+        return <Redirect to="/admin/dashboard" />;
       } else {
-        return <p>Redirect to user dashboard</p>;
+        return <Redirect to="/user/dashboard" />;
       }
     }
 
     if (isAuthenticated()) {
       return <Redirect to="/" />;
     }
-
   };
 
   const loadingMessage = () => {
