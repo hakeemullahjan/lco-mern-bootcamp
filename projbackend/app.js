@@ -11,6 +11,7 @@ const authRouter = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const orderRoutes = require("./routes/order");
+const productRoutes = require("./routes/product");
 
 //DB connection
 mongoose
@@ -34,6 +35,7 @@ app.use("/api", authRouter);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", orderRoutes);
+app.use("/api", productRoutes);
 
 //PORT
 const port = process.env.PORT || 8000;

@@ -23,6 +23,9 @@ exports.createProduct = (req, res) => {
   form.keepExtensions = true;
 
   form.parse(req, (err, fields, file) => {
+    // console.log("err", err);
+    // console.log("fields", fields);
+    // console.log("file", file);
     if (err) {
       return res.status(400).json({
         error: "problelm with image",
@@ -46,8 +49,8 @@ exports.createProduct = (req, res) => {
           error: "File size too big",
         });
       }
-      product.photo.data = fs.readFileSync(file.photo.path);
-      product.photo.contentType = file.photo.type;
+      product.photos.data = fs.readFileSync(file.photo.path);
+      product.photos.contentType = file.photo.type;
     }
 
     //save to DB
