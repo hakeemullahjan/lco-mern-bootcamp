@@ -46,6 +46,9 @@ const StripeCheckout = ({
       .then((response) => {
         //
         console.log("stripe response", response);
+        cartEmpty(() => {
+          console.log("Cart emty");
+        });
       })
       .catch((err) => console.log("stripe error", err));
   };

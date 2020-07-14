@@ -69,8 +69,19 @@ const BraintreePayment = ({
         .then((response) => {
           console.log("PAYMENT SUCCESS", response);
           setInfo({ ...info, success: response.success, loading: false });
-          //EMpty cart
-          //force to reload
+
+          const orderData = {
+            products: products,
+            transaction_id: response.transaction.id,
+            amount: response.transaction.amount,
+          };
+
+          createOrder(userId, token, orderData);
+
+          cartEmpty(() => {
+            console.log("CART EMPTY");
+          });
+          setReload(!reload);
         })
         .catch((err) => {
           console.log("PAYMENT FAIL", err);
